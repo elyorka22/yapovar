@@ -460,14 +460,6 @@ app.post('/api/orders', (req, res) => {
     }
 });
 
-// Уведомление бота о новом заказе (через внутренний API или очередь)
-function notifyBotAboutOrder(order, orderId) {
-    // В Railway сервисы могут общаться через внутренние URL
-    // Или через общий файл/очередь
-    // Здесь просто логируем - бот будет читать orders.json
-    console.log(`New order received: ${orderId}, customer: ${order.name}`);
-}
-
 // API endpoint для настроек бота
 app.get('/api/bot-settings', (req, res) => {
     try {
