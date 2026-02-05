@@ -1,10 +1,27 @@
+# Railway конфигурация для трех сервисов
+
+# Сервис 1: Backend + Frontend
+[services.backend-frontend]
+build.command = "npm install"
+start.command = "node server.js"
+healthcheck.path = "/health"
+healthcheck.timeout = 100
+restart.policy = "on_failure"
+restart.max_retries = 10
+
+# Сервис 2: Telegram Bot
+[services.bot]
+build.command = "npm install"
+start.command = "node bot-service.js"
+healthcheck.path = "/"
+healthcheck.timeout = 100
+restart.policy = "on_failure"
+restart.max_retries = 10
+
+# Общие настройки
 [build]
 builder = "nixpacks"
 
 [deploy]
-startCommand = "node bot.js"
-healthcheckPath = "/"
-healthcheckTimeout = 100
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
-

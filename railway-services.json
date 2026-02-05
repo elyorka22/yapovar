@@ -1,0 +1,29 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "services": [
+      {
+        "name": "backend-frontend",
+        "source": ".",
+        "buildCommand": "npm install",
+        "startCommand": "node server.js",
+        "healthcheckPath": "/health",
+        "healthcheckTimeout": 100,
+        "restartPolicyType": "on_failure",
+        "restartPolicyMaxRetries": 10
+      },
+      {
+        "name": "bot",
+        "source": ".",
+        "buildCommand": "npm install",
+        "startCommand": "node bot-service.js",
+        "restartPolicyType": "on_failure",
+        "restartPolicyMaxRetries": 10
+      }
+    ]
+  }
+}
+

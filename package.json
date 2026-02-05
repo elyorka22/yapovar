@@ -4,8 +4,11 @@
   "description": "Я ПОВАР - Telegram WebApp для наборов и продуктов для готовки",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js",
-    "dev": "nodemon bot.js",
+    "start": "node server.js",
+    "start:bot": "node bot-service.js",
+    "start:all": "node bot.js",
+    "dev": "nodemon server.js",
+    "dev:bot": "nodemon bot-service.js",
     "server": "python3 -m http.server 8000",
     "build": "echo 'Build complete'",
     "postinstall": "echo 'Dependencies installed'"
