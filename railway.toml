@@ -1,27 +1,21 @@
-# Railway конфигурация для трех сервисов
+# Railway конфигурация
+# ПРИМЕЧАНИЕ: Railway не поддерживает автоматическое создание нескольких сервисов
+# из одного репозитория через railway.toml
+# Нужно создать сервисы ВРУЧНУЮ в Railway Dashboard
+# См. RAILWAY_SETUP_GUIDE.md
 
-# Сервис 1: Backend + Frontend
-[services.backend-frontend]
-build.command = "npm install"
-start.command = "node server.js"
-healthcheck.path = "/health"
-healthcheck.timeout = 100
-restart.policy = "on_failure"
-restart.max_retries = 10
-
-# Сервис 2: Telegram Bot
-[services.bot]
-build.command = "npm install"
-start.command = "node bot-service.js"
-healthcheck.path = "/"
-healthcheck.timeout = 100
-restart.policy = "on_failure"
-restart.max_retries = 10
-
-# Общие настройки
 [build]
 builder = "nixpacks"
 
 [deploy]
+startCommand = "node start.js"
+healthcheckPath = "/health"
+healthcheckTimeout = 100
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
+
+# Для создания нескольких сервисов:
+# 1. Создайте первый сервис с Start Command: node server.js
+# 2. Создайте второй сервис с Start Command: node bot-service.js
+# 3. Или используйте переменную SERVICE_TYPE=backend-frontend или SERVICE_TYPE=bot
+#    с Start Command: node start.js
