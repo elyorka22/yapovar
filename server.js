@@ -441,9 +441,10 @@ app.post('/api/orders', (req, res) => {
         orders.push(sanitizedOrder);
         
         if (writeJSONFile('orders.json', orders)) {
-            // Отправить заказ администратору через внутренний API бота
-            // Используем HTTP запрос к боту или очередь
-            notifyBotAboutOrder(sanitizedOrder, orderId);
+            // Бот сервис автоматически обнаружит новый заказ через мониторинг orders.json
+            // Помечаем заказ как новый для бота
+            console.log(`New order saved: ${orderId}, customer: ${order.name}`);
+            console.log(`Bot service will send notification automatically`);
             
             res.json({ 
                 success: true, 
