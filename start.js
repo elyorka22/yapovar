@@ -6,18 +6,31 @@ require('dotenv').config();
 const SERVICE_TYPE = process.env.SERVICE_TYPE || 'backend-frontend';
 
 console.log(`🚀 Starting service: ${SERVICE_TYPE}`);
+console.log(`📦 Environment: ${process.env.NODE_ENV || 'development'}`);
 
 if (SERVICE_TYPE === 'bot') {
     // Запускаем бот сервис
     console.log('🤖 Starting Telegram Bot service...');
-    require('./bot-service.js');
-} else if (SERVICE_TYPE === 'backend-frontend') {
-    // Запускаем backend + frontend сервис
+    console.log('📝 Loading bot-service.js...');
+    try {
+        require('./bot-service.js');
+    } catch (error) {
+        console.error('❌ Error loading bot-service.js:', error);
+        process.exit(1);
+    }
+} else if (SERVICE_TYPE === 'backend-frontend' || !SERVICE_TYPE) {
+    // Запускаем backend + frontend сервис (по умолчанию)
     console.log('🌐 Starting Backend + Frontend service...');
-    require('./server.js');
+    console.log('📝 Loading server.js...');
+    try {
+        require('./server.js');
+    } catch (error) {
+        console.error('❌ Error loading server.js:', error);
+        process.exit(1);
+    }
 } else {
-    // По умолчанию запускаем backend + frontend
-    console.log('🌐 Starting Backend + Frontend service (default)...');
-    require('./server.js');
+    console.error(`❌ Unknown SERVICE_TYPE: ${SERVICE_TYPE}`);
+    console.log('Available types: bot, backend-frontend');
+    process.exit(1);
 }
 
