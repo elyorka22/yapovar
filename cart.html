@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#FF6B35">
+    <title>Savat - MEN OSHPAZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Хедер -->
+    <header class="header">
+        <div class="header-content">
+            <button class="header-back" id="backBtn">
+                <span class="back-icon">←</span>
+            </button>
+            <div class="header-logo">Savat</div>
+            <div style="width: 40px;"></div>
+        </div>
+    </header>
+
+    <!-- Контент корзины -->
+    <main class="cart-content">
+        <div class="cart-container" id="cartContainer">
+            <!-- Товары будут добавлены через JavaScript -->
+        </div>
+        
+        <!-- Итого -->
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+            <div class="summary-row">
+                <span class="summary-label">Jami:</span>
+                <span class="summary-total" id="cartTotal">0 so'm</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Buyurtma berish</button>
+        </div>
+        
+        <!-- Пустая корзина -->
+        <div class="empty-cart" id="emptyCart" style="display: none;">
+            <div class="empty-cart-icon">🛒</div>
+            <h2 class="empty-cart-title">Savat bo'sh</h2>
+            <p class="empty-cart-text">Savatga mahsulot qo'shing</p>
+            <button class="empty-cart-btn" id="startShoppingBtn">Xarid qilishni boshlash</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>
+

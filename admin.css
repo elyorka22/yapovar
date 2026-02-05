@@ -1,0 +1,592 @@
+/* Админ-панель стили */
+.admin-header {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%);
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.admin-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.admin-exit-btn {
+    background-color: var(--white);
+    color: var(--orange);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.admin-exit-btn:active {
+    transform: scale(0.95);
+}
+
+/* Навигация по вкладкам */
+.admin-tabs {
+    display: flex;
+    background-color: var(--white);
+    border-bottom: 2px solid var(--beige);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.admin-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-tab {
+    background: none;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.admin-tab.active {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
+}
+
+.admin-tab:active {
+    background-color: var(--beige);
+}
+
+/* Контент вкладок */
+.admin-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.admin-tab-content {
+    display: none;
+}
+
+.admin-tab-content.active {
+    display: block;
+}
+
+.admin-section {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.admin-section h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.admin-add-btn {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--light-orange) 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 12px 24px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.admin-add-btn:active {
+    transform: scale(0.95);
+}
+
+/* Список товаров в админке */
+.admin-products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.admin-product-card {
+    background-color: var(--beige);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-product-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-product-image {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: 8px;
+}
+
+.admin-product-info {
+    flex: 1;
+}
+
+.admin-product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.admin-product-price {
+    font-size: 14px;
+    color: var(--orange);
+    font-weight: 600;
+}
+
+.admin-product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-edit-btn,
+.admin-delete-btn {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.admin-edit-btn {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.admin-delete-btn {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.admin-edit-btn:active,
+.admin-delete-btn:active {
+    transform: scale(0.95);
+}
+
+/* Список баннеров */
+.admin-banners-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.admin-banner-card {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%);
+    border-radius: 12px;
+    padding: 20px;
+    color: var(--white);
+    position: relative;
+}
+
+.admin-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.admin-banner-text h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.admin-banner-text p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.admin-banner-image {
+    font-size: 48px;
+}
+
+.admin-banner-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Заказы */
+.orders-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.orders-filters select,
+.orders-filters input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-order-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--orange);
+}
+
+.admin-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-order-id {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.admin-order-date {
+    font-size: 14px;
+    color: #666;
+}
+
+.admin-order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-order-customer {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.admin-order-items {
+    font-size: 14px;
+}
+
+.admin-order-items ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.admin-order-items li {
+    margin: 5px 0;
+}
+
+.admin-order-total {
+    font-size: 16px;
+    color: var(--orange);
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.admin-order-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-order-status label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.order-status-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Формы */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px;
+    border: 2px solid var(--beige);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--orange);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--orange);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--beige);
+}
+
+.form-section-title:first-child {
+    margin-top: 0;
+}
+
+.admin-hint {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--beige);
+    border-radius: 8px;
+}
+
+.color-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.color-inputs input[type="color"] {
+    width: 60px;
+    height: 40px;
+    border: 2px solid var(--beige);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.admin-save-btn {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--light-orange) 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 12px 24px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    align-self: flex-start;
+}
+
+.admin-save-btn:active {
+    transform: scale(0.95);
+}
+
+.admin-cancel-btn {
+    background-color: var(--beige);
+    border: none;
+    border-radius: 20px;
+    padding: 12px 24px;
+    color: var(--dark);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.admin-cancel-btn:active {
+    transform: scale(0.95);
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--white);
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid var(--beige);
+}
+
+.modal-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: var(--dark);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.modal-close:active {
+    transform: scale(0.9);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-top: 2px solid var(--beige);
+    justify-content: flex-end;
+}
+
+/* Статистика */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    color: var(--white);
+}
+
+.stat-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .admin-products-list,
+    .admin-banners-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .admin-tabs {
+        flex-wrap: nowrap;
+    }
+}
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#FF6B35">
+    <title>Mahsulotlar - MEN OSHPAZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Хедер -->
+    <header class="header">
+        <div class="header-content">
+            <button class="header-back" id="backBtn">
+                <span class="back-icon">←</span>
+            </button>
+            <div class="header-logo">MEN OSHPAZ</div>
+            <button class="header-cart" id="cartBtn">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Заголовок категории -->
+    <section class="category-header">
+        <h1 class="category-title" id="categoryTitle">Mahsulotlar</h1>
+    </section>
+
+    <!-- Список товаров -->
+    <section class="products">
+        <div class="products-list" id="productsList">
+            <!-- Товары будут добавлены через JavaScript -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>
+

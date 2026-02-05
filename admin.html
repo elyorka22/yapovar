@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#FF6B35">
+    <title>Admin Panel - MEN OSHPAZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Хедер админ-панели -->
+    <header class="admin-header">
+        <div class="admin-header-content">
+            <h1 class="admin-title">Admin Panel</h1>
+            <button class="admin-exit-btn" id="exitBtn">Chiqish</button>
+        </div>
+    </header>
+
+    <!-- Навигация по вкладкам -->
+    <nav class="admin-tabs">
+        <button class="admin-tab active" data-tab="products">Mahsulotlar</button>
+        <button class="admin-tab" data-tab="banners">Bannerlar</button>
+        <button class="admin-tab" data-tab="hero">Hero Blok</button>
+        <button class="admin-tab" data-tab="bot">Bot Sozlash</button>
+        <button class="admin-tab" data-tab="stats">Statistika</button>
+    </nav>
+
+    <!-- Контент вкладок -->
+    <main class="admin-content">
+        <!-- Вкладка товаров -->
+        <div class="admin-tab-content active" id="products-tab">
+            <div class="admin-section">
+                <h2>Mahsulotlarni boshqarish</h2>
+                <button class="admin-add-btn" id="addProductBtn">+ Yangi mahsulot qo'shish</button>
+                
+                <div class="admin-products-list" id="productsList">
+                    <!-- Товары будут добавлены через JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка баннеров -->
+        <div class="admin-tab-content" id="banners-tab">
+            <div class="admin-section">
+                <h2>Bannerlarni boshqarish</h2>
+                <button class="admin-add-btn" id="addBannerBtn">+ Yangi banner qo'shish</button>
+                
+                <div class="admin-banners-list" id="bannersList">
+                    <!-- Баннеры будут добавлены через JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка Hero-блока -->
+        <div class="admin-tab-content" id="hero-tab">
+            <div class="admin-section">
+                <h2>Hero Blokni sozlash</h2>
+                <div class="admin-form">
+                    <div class="form-group">
+                        <label>Sarlavha</label>
+                        <input type="text" id="heroTitle" placeholder="MEN OSHPAZ">
+                    </div>
+                    <div class="form-group">
+                        <label>Qisqa matn</label>
+                        <input type="text" id="heroSubtitle" placeholder="O'zim pishiraman">
+                    </div>
+                    <div class="form-group">
+                        <label>Rasm URL yoki Emoji</label>
+                        <input type="text" id="heroImage" placeholder="👨‍🍳 yoki https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>Fon rangi (gradient)</label>
+                        <div class="color-inputs">
+                            <input type="color" id="heroColor1" value="#FF6B35">
+                            <input type="color" id="heroColor2" value="#D62828">
+                        </div>
+                    </div>
+                    <button class="admin-save-btn" id="saveHeroBtn">Saqlash</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка заказов -->
+        <div class="admin-tab-content" id="orders-tab">
+            <div class="admin-section">
+                <h2>Buyurtmalarni boshqarish</h2>
+                <div class="orders-filters">
+                    <select id="orderStatusFilter">
+                        <option value="all">Barcha buyurtmalar</option>
+                        <option value="new">Yangi</option>
+                        <option value="processing">Jarayonda</option>
+                        <option value="confirmed">Tasdiqlangan</option>
+                        <option value="preparing">Tayyorlanmoqda</option>
+                        <option value="delivering">Yetkazilmoqda</option>
+                        <option value="completed">Yakunlangan</option>
+                        <option value="cancelled">Bekor qilingan</option>
+                    </select>
+                    <input type="text" id="orderSearch" placeholder="Qidirish (nomer, ism, telefon)">
+                </div>
+                <div class="orders-list" id="ordersList">
+                    <!-- Заказы будут добавлены через JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка статистики -->
+        <div class="admin-tab-content" id="stats-tab">
+            <div class="admin-section">
+                <h2>Statistika</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🛒</div>
+                        <div class="stat-value" id="totalOrders">0</div>
+                        <div class="stat-label">Buyurtmalar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">Foydalanuvchilar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-value" id="totalRevenue">0</div>
+                        <div class="stat-label">Daromad</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-value" id="totalProducts">0</div>
+                        <div class="stat-label">Mahsulotlar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно для товара -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Yangi mahsulot</h3>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Kategoriya</label>
+                    <select id="productCategory">
+                        <option value="pizza">Pitsa</option>
+                        <option value="samsa">Somsa</option>
+                        <option value="burger">Burger</option>
+                        <option value="breakfast">Nonushta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nomi</label>
+                    <input type="text" id="productName" placeholder="Mahsulot nomi">
+                </div>
+                <div class="form-group">
+                    <label>Tavsif</label>
+                    <textarea id="productDescription" placeholder="Mahsulot tavsifi"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Narx (so'm)</label>
+                    <input type="number" id="productPrice" placeholder="25000">
+                </div>
+                <div class="form-group">
+                    <label>Rasm (Emoji yoki URL)</label>
+                    <input type="text" id="productImage" placeholder="🍕">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="admin-cancel-btn" id="cancelProductBtn">Bekor qilish</button>
+                <button class="admin-save-btn" id="saveProductBtn">Saqlash</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для баннера -->
+    <div class="modal" id="bannerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="bannerModalTitle">Yangi banner</h3>
+                <button class="modal-close" id="closeBannerModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Sarlavha</label>
+                    <input type="text" id="bannerTitle" placeholder="Banner sarlavhasi">
+                </div>
+                <div class="form-group">
+                    <label>Qisqa matn</label>
+                    <input type="text" id="bannerSubtitle" placeholder="Banner qisqa matni">
+                </div>
+                <div class="form-group">
+                    <label>Rasm (Emoji yoki URL)</label>
+                    <input type="text" id="bannerImage" placeholder="👨‍🍳">
+                </div>
+                <div class="form-group">
+                    <label>Fon rangi</label>
+                    <div class="color-inputs">
+                        <input type="color" id="bannerColor1" value="#FF6B35">
+                        <input type="color" id="bannerColor2" value="#D62828">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="admin-cancel-btn" id="cancelBannerBtn">Bekor qilish</button>
+                <button class="admin-save-btn" id="saveBannerBtn">Saqlash</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
+

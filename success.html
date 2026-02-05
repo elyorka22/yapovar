@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#FF6B35">
+    <title>Buyurtma qabul qilindi - MEN OSHPAZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Хедер -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-logo">MEN OSHPAZ</div>
+            <div style="width: 40px;"></div>
+        </div>
+    </header>
+
+    <!-- Контент успешного заказа -->
+    <main class="success-content">
+        <div class="success-container">
+            <div class="success-icon">✅</div>
+            <h1 class="success-title">Buyurtma qabul qilindi!</h1>
+            <p class="success-message">
+                Sizning buyurtmangiz qabul qilindi. Tez orada siz bilan bog'lanamiz.
+            </p>
+            
+            <div class="order-info" id="orderInfo">
+                <!-- Информация о заказе будет добавлена через JavaScript -->
+            </div>
+            
+            <div class="success-actions">
+                <button class="success-btn" id="backToShopBtn">Asosiy sahifaga qaytish</button>
+                <button class="success-btn secondary" id="viewOrdersBtn">Buyurtmalarimni ko'rish</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="success.js"></script>
+</body>
+</html>
+
